@@ -24,3 +24,12 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+::view-transition-old(page-content) {
+  animation: none;
+}
+
+::view-transition-new(page-content) {
+  animation: none;
+}

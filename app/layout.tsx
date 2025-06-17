@@ -26,7 +26,10 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <div>navigation</div>
+          <div style={{ viewTransitionName: 'page-content' }}>{children}</div>
+        </body>
       </html>
     </ViewTransitions>
   )

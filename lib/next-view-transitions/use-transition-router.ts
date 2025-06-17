@@ -2,6 +2,7 @@ import { useRouter as useNextRouter } from 'next/navigation'
 import { startTransition, useCallback, useMemo } from 'react'
 import { useSetFinishViewTransition } from './transition-context'
 import { AppRouterInstance, NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import { createTransitionAnimation } from './createTransitionAnimation'
 
 export type TransitionOptions = {
   onTransitionReady?: () => void
@@ -65,4 +66,24 @@ export function useTransitionRouter() {
     }),
     [push, replace, router]
   )
+}
+
+export function routeWithPageTransition(router: any, href: string, isPrevious: boolean) {
+  router.push(href, {
+    onTransitionReady: () => {
+      console.log('Transition ready')
+
+      const documentElement = document.documentElement
+
+      let animation
+      if (isPrevious) {
+        animation = createTransitionAnimation('translateX(100%)', 'translateX(-100%)')
+      } else {
+        animation = createTransitionAnimation('translateX(-100%)', 'translateX(100%)')
+      }
+
+      documentElement.animate(animation.oldElement.keyframes, animation.oldElement.options)
+      documentElement.animate(animation.newElement.keyframes, animation.newElement.options)
+    }
+  })
 }

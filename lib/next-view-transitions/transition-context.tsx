@@ -19,7 +19,7 @@ export function ViewTransitions({
     }
   }, [finishViewTransition])
 
-  useBrowserNativeTransitions()
+  // useBrowserNativeTransitions() // remove this to prevent the default view transition (fade in/out)
 
   return <ViewTransitionsContext.Provider value={setFinishViewTransition}>{children}</ViewTransitionsContext.Provider>
 }
