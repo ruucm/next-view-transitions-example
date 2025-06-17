@@ -17,9 +17,7 @@ function isModifiedEvent(event: React.MouseEvent): boolean {
 }
 
 // copied from https://github.com/vercel/next.js/blob/66f8ffaa7a834f6591a12517618dce1fd69784f6/packages/next/src/client/link.tsx#L204-L217
-function shouldPreserveDefault(
-  e: React.MouseEvent<HTMLAnchorElement>
-): boolean {
+function shouldPreserveDefault(e: React.MouseEvent<HTMLAnchorElement>): boolean {
   const { nodeName } = e.currentTarget
 
   // anchors inside an svg have a lowercase nodeName

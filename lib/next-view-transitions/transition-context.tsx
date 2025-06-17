@@ -3,18 +3,14 @@ import { createContext, use, useEffect, useState } from 'react'
 
 import { useBrowserNativeTransitions } from './browser-native-events'
 
-const ViewTransitionsContext = createContext<
-  Dispatch<SetStateAction<(() => void) | null>>
->(() => () => {})
+const ViewTransitionsContext = createContext<Dispatch<SetStateAction<(() => void) | null>>>(() => () => {})
 
 export function ViewTransitions({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const [finishViewTransition, setFinishViewTransition] = useState<
-    null | (() => void)
-  >(null)
+  const [finishViewTransition, setFinishViewTransition] = useState<null | (() => void)>(null)
 
   useEffect(() => {
     if (finishViewTransition) {
@@ -25,11 +21,7 @@ export function ViewTransitions({
 
   useBrowserNativeTransitions()
 
-  return (
-    <ViewTransitionsContext.Provider value={setFinishViewTransition}>
-      {children}
-    </ViewTransitionsContext.Provider>
-  )
+  return <ViewTransitionsContext.Provider value={setFinishViewTransition}>{children}</ViewTransitionsContext.Provider>
 }
 
 export function useSetFinishViewTransition() {

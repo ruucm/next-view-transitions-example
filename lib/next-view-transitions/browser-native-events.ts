@@ -41,10 +41,7 @@ export function useBrowserNativeTransitions() {
         })
       })
 
-      setCurrentViewTransition([
-        pendingStartViewTransition,
-        pendingViewTransitionResolve!,
-      ])
+      setCurrentViewTransition([pendingStartViewTransition, pendingViewTransitionResolve!])
     }
     window.addEventListener('popstate', onPopState)
 
@@ -65,7 +62,7 @@ export function useBrowserNativeTransitions() {
     transitionRef.current = currentViewTransition
   }, [currentViewTransition])
 
-  const hash = useHash();
+  const hash = useHash()
 
   useEffect(() => {
     // When the new route component is actually mounted, we finish the view
@@ -75,5 +72,5 @@ export function useBrowserNativeTransitions() {
       transitionRef.current[1]()
       transitionRef.current = null
     }
-  }, [hash, pathname]);
+  }, [hash, pathname])
 }

@@ -1,11 +1,7 @@
 import { useSyncExternalStore } from 'react'
 
 export function useHash() {
-  return useSyncExternalStore(
-    subscribeHash,
-    getHashSnapshot,
-    getServerHashSnapshot
-  )
+  return useSyncExternalStore(subscribeHash, getHashSnapshot, getServerHashSnapshot)
 }
 
 function getHashSnapshot() {
