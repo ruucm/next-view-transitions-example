@@ -52,6 +52,7 @@ export function Link(props: React.ComponentProps<typeof NextLink>) {
         e.preventDefault()
 
         const navigate = replace ? router.replace : router.push
+        // @ts-ignore
         navigate(as || href, { scroll: scroll ?? true })
       }
     },
